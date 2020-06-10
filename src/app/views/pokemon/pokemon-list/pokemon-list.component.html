@@ -1,0 +1,5 @@
+<p>pokemon-list works!</p>
+<ng-container *ngIf="pokemons$ | async as pokemons">
+    <mat-card *ngFor="let pocemon of pokemons.results">{{pocemon.name}}</mat-card>
+</ng-container>
+
