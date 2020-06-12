@@ -11,14 +11,12 @@ import { PokemonService } from "../../shared/services/pokemon.service";
 })
 export class PokemonComponent implements OnInit {
   pokemons$: Observable<Pokemon[]>;
-  // pokemons;
+  pokemon$: Observable<Pokemon>;
+
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    // this.pokemonService.getAllPokemons().subscribe(data => {
-    //   this.pokemons = data;
-    //   console.log('Data: ', data)
-    // });
     this.pokemons$ = this.pokemonService.getAllPokemons();
+    this.pokemon$ = this.pokemonService.emitedPocemon$;
   }
 }

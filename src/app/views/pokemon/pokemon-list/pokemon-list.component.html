@@ -1,5 +1,10 @@
-<p>pokemon-list works!</p>
-<ng-container *ngIf="pokemons$ | async as pokemons">
-    <mat-card *ngFor="let pocemon of pokemons.results">{{pocemon.name}}</mat-card>
-</ng-container>
-
+<div role="list" *ngIf="pokemons$ | async as pokemons; else load">
+  <div
+    role="listitem"
+    *ngFor="let pocemon of pokemons.results; index as i; trackBy: trackByFn"
+    (click)="onDetail(pocemon.url)"
+  >
+    {{ pocemon.name }}
+  </div>
+</div>
+<ng-template #load>Load!!!</ng-template>

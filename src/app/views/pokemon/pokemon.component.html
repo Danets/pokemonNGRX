@@ -1,3 +1,8 @@
-<p>pokemon works!</p>
-<app-pokemon-list [pokemons$]="pokemons$"></app-pokemon-list> 
-
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <app-pokemon-list [pokemons$]="pokemons$"></app-pokemon-list>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-pokemon-detail [pokemon$]="pokemon$"></app-pokemon-detail>
+  </mat-grid-tile>
+</mat-grid-list>
