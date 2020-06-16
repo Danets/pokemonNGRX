@@ -9,7 +9,7 @@ import { Pokemon } from "../../shared/models/pokemon";
   providedIn: "root",
 })
 export class PokemonService {
-  url = "https://pokeapi.co/api/v2/pokemon";
+  private url = "https://pokeapi.co/api/v2/pokemon";
   selectedPocemon: Subject<Pokemon> = new Subject();
   emitedPocemon$: Observable<Pokemon> = this.selectedPocemon.asObservable();
 
@@ -17,11 +17,13 @@ export class PokemonService {
 
   getAllPokemons(): Observable<Pokemon[]> {
     return this.http.get<Pokemon[]>(this.url);
+    const id = this.url.split("/")
+    console.log(id);
   }
 
   getPokemon(url: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(url).pipe(
-      map(({ id, name, height, weight, sprites }) =>  ({
+      map(({ id, name, height, weight, sprites }) => ({
         id,
         name,
         url,

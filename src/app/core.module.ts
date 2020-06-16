@@ -7,7 +7,10 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
-// import { reducers } from './shared/states/reducers';
+import { PokemonEffects } from './shared/states/effects/pokemon.effects';
+import { PokemonService } from './shared/services/pokemon.service';
+
+import { reducers } from './shared/states/root.reducer';
 
 @NgModule({
   declarations: [],
@@ -15,11 +18,11 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([PokemonEffects]),
     StoreRouterConnectingModule.forRoot(),
   ],
-  providers: [],
+  providers: [PokemonService],
   exports: []
 })
 export class CoreModule {}

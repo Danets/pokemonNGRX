@@ -1,4 +1,4 @@
-import { PokemonState, pokemonAdapter } from '../pokemon.adapter';
+import { PokemonState, pokemonAdapter } from '../adapters/pokemon.adapter';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const selectPokemonState = createFeatureSelector<PokemonState>(
