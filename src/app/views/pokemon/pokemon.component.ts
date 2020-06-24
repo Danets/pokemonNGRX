@@ -23,11 +23,15 @@ export class PokemonComponent implements OnInit {
 
   // constructor(private pokemonService: PokemonService) {}
   constructor(private store$: Store<AppStore>, private pokemonService: PokemonService) {
+        // OR SELECT HERE ??? 
+    // this.pokemon$ = this.store$.select(PokemonSelectors.selectAll)
     this.store$.dispatch(PokemonActions.loadPokemons());
   }
 
   ngOnInit(): void {
     // this.pokemons$ = this.pokemonService.getAllPokemons();
     this.pokemon$ = this.pokemonService.emitedPocemon$;
+    // OR DISPATCH HERE ??? 
+    // this.store$.dispatch(PokemonActions.loadPokemons());
   }
 }
