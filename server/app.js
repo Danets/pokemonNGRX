@@ -11,6 +11,7 @@ const app = express();
 
 // Connect with Mongo
 const uri = require("./config/keys");
+
 mongoose.connect(uri.mongoURI)
 .then(() => console.log("Connected with MongoDB successfully!"))
 .catch(err => console.log(err))
