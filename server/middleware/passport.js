@@ -3,6 +3,7 @@ const JwtStrategy = require("passport-jwt").Strategy,
   keys = require("../config/keys"),
   mongoose = require("mongoose"),
   User = mongoose.model("users"),
+  errorHandler = require("../utils/errorHandler");
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -22,7 +23,7 @@ module.exports = (passport) => {
           done(null, false);
         }
       } catch (error) {
-        console.log(error);
+        errorHandler(res, error);
       }
     })
   );
