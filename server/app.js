@@ -16,6 +16,11 @@ mongoose.connect(uri.mongoURI)
 .then(() => console.log("Connected with MongoDB successfully!"))
 .catch(err => console.log(err))
 
+// PASSPORT INIT
+app.use(passport.initialize());
+// SEND PASSPORT TO MIDDLEWARE
+require('./middleware/passport')(passport);
+
 // Logger
 app.use( require('morgan')('dev'));
 
