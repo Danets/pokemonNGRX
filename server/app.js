@@ -1,6 +1,7 @@
 const express = require('express');
 
 const auth =  require('./routes/auth');
+const position =  require('./routes/position');
 
 const bodyParser = require('body-parser');
 
@@ -24,12 +25,15 @@ require('./middleware/passport')(passport);
 // Logger
 app.use( require('morgan')('dev'));
 
+// BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Cors
 app.use(require('cors')());
 
+// ROUTES
 app.use('/api/auth', auth);
+app.use('/api/position', position);
 
 module.exports = app;
