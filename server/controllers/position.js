@@ -32,7 +32,7 @@ module.exports.create = async (req, res) => {
 module.exports.delete = async (req, res) => {
   try {
     const position = await Position.remove({ _id: req.params.id });
-    res.status(200).json(position);
+    res.status(200).json({message: "Position was removed"});
   } catch (e) {
     errorHandler(res, e);
   }
