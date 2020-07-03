@@ -2,6 +2,7 @@ const express = require('express');
 
 const auth =  require('./routes/auth');
 const position =  require('./routes/position');
+const category =  require('./routes/category');
 
 const bodyParser = require('body-parser');
 
@@ -34,6 +35,7 @@ app.use(require('cors')());
 
 // ROUTES
 app.use('/api/auth', auth);
+app.use('/api/category', category);
 app.use('/api/position', position);
 
 module.exports = app;
