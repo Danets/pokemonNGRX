@@ -1,5 +1,6 @@
 const express = require('express');
 
+// ROUTES
 const auth =  require('./routes/auth');
 const position =  require('./routes/position');
 const category =  require('./routes/category');
@@ -25,6 +26,9 @@ require('./middleware/passport')(passport);
 
 // Logger
 app.use( require('morgan')('dev'));
+
+// OPEN ACCESS TO IMAGE
+app.use('/uploads', express.static('/uploads'));
 
 // BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));

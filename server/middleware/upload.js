@@ -13,13 +13,14 @@ const storage = multer.diskStorage({
 
 // CHECKOUT TYPE OF FILE FOR UPLOAD
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
+    if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg') {
         cb(null, true);
     } else {
         cb(null, false);
     }
 }
 
+// SET UP SIZE FOR FILE
 const limits = {
     fileSize: 1024 *1024 * 5
 }

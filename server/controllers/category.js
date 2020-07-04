@@ -28,7 +28,40 @@ module.exports.delete = async (req, res) => {
     await Category.remove({ _id: req.params.id });
     // HERE IS WE HAVE TO DELETE ALL POSITIONS RELATED TO CATEGORY !!!
     await Position.remove({ category: req.params.id });
-    res.status(200).json({message: "Category was removed"});
+    res.status(200).json({ message: "Category was removed" });
+  } catch (e) {
+    errorHandler(res, e);
+  }
+};
+
+module.exports.create = async (req, res) => {
+  const category = new Category({
+    name: req.body.name,
+    user: req.user.id,
+    srcUrl: req.file ? req.file.path : "",
+  });
+  try {
+    await category.save();
+    res.status(201).json(category);
+  } catch (e) {
+    errorHandler(res, e);
+  }
+};
+
+module.exports.update = async (req, res) => {
+  const updated = {
+    name: req.body.name,
+  };
+  if (req.file) {
+    updated.srcUrl = req.file.path;
+  }
+  try {
+    const category = await Category.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: updated },
+      { new: true }
+    );
+    res.status(200).json(category);
   } catch (e) {
     errorHandler(res, e);
   }
