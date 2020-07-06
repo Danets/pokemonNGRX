@@ -1,7 +1,6 @@
 const Order = require("../models/Order");
 
 const errorHandler = require("../utils/errorHandler");
-const { skipPartiallyEmittedExpressions } = require("typescript");
 
 module.exports.getAll = async (req, res) => {
   const query = {
@@ -21,7 +20,7 @@ module.exports.getAll = async (req, res) => {
     if (!query.date) {
       query.date = {};
     }
-    req.query["@lte"] = req.query.end;
+    req.query["$lte"] = req.query.end;
   }
   //   CHEKING OUT FOR EXISTING ORDER IN REQUEST
   if (req.query.order) {
